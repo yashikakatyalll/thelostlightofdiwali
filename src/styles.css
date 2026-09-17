@@ -1,0 +1,248 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-night-deep: var(--night-deep);
+  --color-night: var(--night);
+  --color-night-soft: var(--night-soft);
+  --color-diya: var(--diya);
+  --color-diya-glow: var(--diya-glow);
+  --color-lantern: var(--lantern);
+  --color-marigold: var(--marigold);
+  --color-rose: var(--rose);
+  --color-temple: var(--temple);
+  --color-moon: var(--moon);
+
+  --font-display: "Chewy", "Patrick Hand", system-ui, sans-serif;
+  --font-body: "Nunito", system-ui, sans-serif;
+  --font-hand: "Patrick Hand", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 1.25rem;
+  --background: oklch(0.18 0.06 270);
+  --foreground: oklch(0.97 0.02 80);
+  --card: oklch(0.22 0.06 270);
+  --card-foreground: oklch(0.97 0.02 80);
+  --popover: oklch(0.22 0.06 270);
+  --popover-foreground: oklch(0.97 0.02 80);
+  --primary: oklch(0.82 0.17 70);
+  --primary-foreground: oklch(0.2 0.05 270);
+  --secondary: oklch(0.35 0.1 300);
+  --secondary-foreground: oklch(0.97 0.02 80);
+  --muted: oklch(0.28 0.05 270);
+  --muted-foreground: oklch(0.78 0.04 80);
+  --accent: oklch(0.7 0.2 30);
+  --accent-foreground: oklch(0.15 0.05 270);
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.35 0.05 270 / 50%);
+  --input: oklch(0.35 0.05 270 / 50%);
+  --ring: oklch(0.82 0.17 70);
+
+  /* Diwali palette */
+  --night-deep: oklch(0.14 0.07 270);
+  --night: oklch(0.22 0.09 275);
+  --night-soft: oklch(0.32 0.08 285);
+  --diya: oklch(0.86 0.18 75);
+  --diya-glow: oklch(0.92 0.16 85);
+  --lantern: oklch(0.78 0.2 45);
+  --marigold: oklch(0.78 0.2 55);
+  --rose: oklch(0.7 0.21 15);
+  --temple: oklch(0.55 0.12 30);
+  --moon: oklch(0.96 0.05 90);
+
+  --glow-diya: 0 0 30px oklch(0.86 0.18 75 / 0.8), 0 0 80px oklch(0.86 0.18 75 / 0.5);
+  --glow-lantern: 0 0 40px oklch(0.78 0.2 45 / 0.7), 0 0 100px oklch(0.78 0.2 45 / 0.4);
+  --glow-beam: 0 0 12px oklch(0.92 0.16 85 / 0.9), 0 0 28px oklch(0.86 0.18 75 / 0.7);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* ===== Magical animations ===== */
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0) }
+  50% { transform: translateY(-8px) }
+}
+@keyframes breathe {
+  0%, 100% { transform: scale(1) }
+  50% { transform: scale(1.04) }
+}
+@keyframes blink {
+  0%, 92%, 100% { transform: scaleY(1) }
+  95% { transform: scaleY(0.08) }
+}
+@keyframes ear-wiggle {
+  0%, 100% { transform: rotate(0deg) }
+  25% { transform: rotate(-6deg) }
+  75% { transform: rotate(6deg) }
+}
+@keyframes trunk-sway {
+  0%, 100% { transform: rotate(-4deg) }
+  50% { transform: rotate(6deg) }
+}
+@keyframes happy-bounce {
+  0%, 100% { transform: translateY(0) rotate(0) }
+  20% { transform: translateY(-30px) rotate(-3deg) }
+  40% { transform: translateY(0) rotate(0) }
+  60% { transform: translateY(-18px) rotate(3deg) }
+  80% { transform: translateY(0) rotate(0) }
+}
+@keyframes flame-flicker {
+  0%, 100% { transform: scale(1) rotate(-2deg); opacity: 0.95 }
+  50% { transform: scale(1.12) rotate(2deg); opacity: 1 }
+}
+@keyframes sparkle-pop {
+  0% { transform: scale(0) rotate(0); opacity: 0 }
+  40% { transform: scale(1) rotate(180deg); opacity: 1 }
+  100% { transform: scale(0) rotate(360deg); opacity: 0 }
+}
+@keyframes firefly-drift {
+  0% { transform: translate(0, 0); opacity: 0 }
+  20% { opacity: 1 }
+  100% { transform: translate(var(--dx, 60px), var(--dy, -120px)); opacity: 0 }
+}
+@keyframes mirror-shine {
+  0% { transform: translateX(-100%) skewX(-20deg) }
+  100% { transform: translateX(220%) skewX(-20deg) }
+}
+@keyframes beam-pulse {
+  0%, 100% { filter: drop-shadow(0 0 6px oklch(0.92 0.16 85 / 0.9)) }
+  50% { filter: drop-shadow(0 0 16px oklch(0.92 0.16 85 / 1)) drop-shadow(0 0 32px oklch(0.86 0.18 75 / 0.7)) }
+}
+@keyframes drift-up {
+  from { transform: translateY(110vh) translateX(0); opacity: 0 }
+  10% { opacity: 1 }
+  to { transform: translateY(-20vh) translateX(var(--dx, 40px)); opacity: 0 }
+}
+@keyframes firework-burst {
+  0% { transform: scale(0); opacity: 0 }
+  20% { opacity: 1 }
+  100% { transform: scale(1); opacity: 0 }
+}
+@keyframes petal-fall {
+  0% { transform: translateY(-10vh) rotate(0); opacity: 0 }
+  10% { opacity: 1 }
+  100% { transform: translateY(110vh) rotate(540deg); opacity: 0 }
+}
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.4; transform: scale(1) }
+  50% { opacity: 1; transform: scale(1.4) }
+}
+@keyframes title-glow {
+  0%, 100% { text-shadow: 0 0 20px oklch(0.86 0.18 75 / 0.6), 0 0 40px oklch(0.78 0.2 45 / 0.4) }
+  50% { text-shadow: 0 0 30px oklch(0.86 0.18 75 / 0.9), 0 0 60px oklch(0.78 0.2 45 / 0.6) }
+}
+@keyframes slide-up-fade {
+  from { opacity: 0; transform: translateY(20px) }
+  to { opacity: 1; transform: translateY(0) }
+}
+@keyframes rise-lantern {
+  from { transform: translateY(0) translateX(0); opacity: 1 }
+  to { transform: translateY(-120vh) translateX(var(--dx, 20px)); opacity: 0 }
+}
+@keyframes camera-push {
+  0% { transform: scale(1.18) translateY(20px) }
+  100% { transform: scale(1) translateY(0) }
+}
+@keyframes fade-from-black {
+  0% { opacity: 1 }
+  100% { opacity: 0; visibility: hidden }
+}
+@keyframes elephant-walk-in {
+  0% { transform: translateX(60vw); opacity: 0 }
+  100% { transform: translateX(-50%); opacity: 1 }
+}
+@keyframes elephant-dance {
+  0%, 100% { transform: translateY(0) rotate(-3deg) }
+  50% { transform: translateY(-14px) rotate(3deg) }
+}
+@keyframes villager-dance {
+  0%, 100% { transform: translateY(0) rotate(-4deg) }
+  50% { transform: translateY(-10px) rotate(4deg) }
+}
+@keyframes firework-rays {
+  0% { opacity: 0; transform: rotate(var(--r, 0deg)) scaleX(0) }
+  20% { opacity: 1; transform: rotate(var(--r, 0deg)) scaleX(0.6) }
+  100% { opacity: 0; transform: rotate(var(--r, 0deg)) scaleX(1) }
+}
+@keyframes obstacle-slide {
+  0%, 100% { transform: translate(calc(-50% - var(--range, 6vw)), -50%) }
+  50% { transform: translate(calc(-50% + var(--range, 6vw)), -50%) }
+}
+@keyframes firework-particle {
+  0% { transform: translate(0, 0) scale(0.6); opacity: 0 }
+  8% { opacity: 1; transform: translate(calc(var(--tx) * 0.08), calc(var(--ty) * 0.08)) scale(1.1) }
+  60% { opacity: 0.9; transform: translate(calc(var(--tx) * 0.85), calc(var(--ty) * 0.85 + 14px)) scale(0.9) }
+  100% { transform: translate(var(--tx), calc(var(--ty) + 42px)) scale(0.2); opacity: 0 }
+}
+
+.font-display { font-family: var(--font-display); letter-spacing: 0.02em; }
+.font-body { font-family: var(--font-body); }
+.font-hand { font-family: var(--font-hand); }
+
+@keyframes sad-sway {
+  0%, 100% { transform: translateY(0) rotate(-1deg) }
+  50% { transform: translateY(2px) rotate(1deg) }
+}
+@keyframes tear-drop {
+  0% { transform: translateY(0); opacity: 0 }
+  20% { opacity: 1 }
+  100% { transform: translateY(40px); opacity: 0 }
+}
+@keyframes spin-cw {
+  to { transform: rotate(360deg) }
+}
+@keyframes shatter-piece {
+  0% { transform: translate(0,0) rotate(0deg) scale(1); opacity: 1 }
+  60% { opacity: 1 }
+  100% { transform: translate(var(--tx), calc(var(--ty) + 36px)) rotate(var(--rot)) scale(0.4); opacity: 0 }
+}
+
